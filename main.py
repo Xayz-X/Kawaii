@@ -11,7 +11,7 @@ async def life_span(app: FastAPI):
     print("Server is starting....")
     await init_db()
     yield
-    print("Server has been stopped")
+    print("Server has been stopped.")
 
 
 version = "v1"
@@ -24,5 +24,4 @@ app = FastAPI(
 )
 
 app.include_router(anime_route, prefix=f"/api/{version}/anime", tags=["anime"])
-
 
