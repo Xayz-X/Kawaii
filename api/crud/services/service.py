@@ -6,8 +6,7 @@ from sqlalchemy import func
 class AnimeService:
     async def get_specific_anime_by_id(self, anime_id: int, session: AsyncSession):
         """Get a single anime data by the id."""
-        # just count the rows aavailbe on thsi table and print
-        query = select(Anime).where(Anime.id == anime_id) # it ill retuen all columsn right?
+        query = select(Anime).where(Anime.id == anime_id) 
         result = await session.exec(query)
         first_result = result.scalars().first()
         return first_result
