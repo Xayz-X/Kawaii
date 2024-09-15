@@ -23,7 +23,7 @@ def performance_monitor(func):
         return response
     return wrapper
 
-BASE_URL = "http://127.0.0.1:8000/api/v1/anime"
+BASE_URL = "http://localhost:8000/api/v1/anime"
 LocalSession = requests.Session()
 
 @performance_monitor
