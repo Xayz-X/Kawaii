@@ -15,13 +15,12 @@ async def init_db():
         from api.schemas.anime import Anime
         await con.run_sync(SQLModel.metadata.create_all)
 
-    
+SessionLocal = sessionmaker(
+    bind=async_engine,
+    class_=AsyncSession,
+    expire_on_commit=False
+)
 async def get_session():
-    SessionLocal = sessionmaker(
-        bind=async_engine,
-        class_=AsyncSession,
-        expire_on_commit=False
-    )
     async with SessionLocal() as session:
         yield session
         
