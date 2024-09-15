@@ -1,3 +1,12 @@
+"""
+Main file to run the Kawaii API.
+
+-- Author: Xayz
+-- Version: V1
+-- Database: Async PostgreSQL
+"""
+
+
 from __future__ import annotations
 
 import logging
