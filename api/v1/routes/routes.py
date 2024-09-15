@@ -29,7 +29,7 @@ async def get_single_anime(
     return result
 
 
-@anime_route.get("/count", status_code=status.HTTP_200_OK)
+@anime_route.get("/count/", status_code=status.HTTP_200_OK)
 async def get_anime_counts(session: AsyncSession = Depends(get_session)) -> dict:
     result = await anime_service.count_anime_rows(session=session)
     if not result:
