@@ -8,7 +8,11 @@ from api.secrets.config import Config
 
 async_engine: AsyncEngine = create_async_engine(
     url=Config.DATABASE_URL, 
-    echo=True)
+    echo=True,
+    pool_size=5,
+    max_overflow=10,
+    pool_recycle=3600  
+    )
 
 async def init_db():
     async with async_engine.begin() as con:
@@ -22,5 +26,8 @@ SessionLocal = sessionmaker(
 )
 async def get_session():
     async with SessionLocal() as session:
-        yield session
-        
+        try:
+            yield session
+        finally:
+            await session.close()
+
