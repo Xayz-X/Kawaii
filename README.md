@@ -34,6 +34,8 @@ def make_request(session: requests.Session,
     
 def main():
     anime_id = 1
+    session = LocalSession
+
     make_request(session=session,
                     method="GET",
                     url=BASE_URL + f"/{anime_id}")
