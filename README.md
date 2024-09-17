@@ -18,10 +18,11 @@ The Kawaii API allows users to access information about anime series, episodes, 
 Here's a simple example of how to use the Kawaii API to retrieve information about a specific anime series:
 
 ```python
-import request
+import requests
+from typing import Literal
 
-BASE_URL = "http://localhost:8000/api/v1/anime"
-LocalSession = requests.Session()
+BASE_URL: str = "http://localhost:8000/api/v1"
+LocalSession: requests.Session = requests.Session()
 
 def make_request(session: requests.Session,
                   method: Literal['GET', 'POST'],
@@ -38,7 +39,7 @@ def main():
 
     make_request(session=session,
                     method="GET",
-                    url=BASE_URL + f"/{anime_id}")
+                    url=BASE_URL + f"/anime/{anime_id}")
 if __name__ == "__main__":
     main()
 ```
