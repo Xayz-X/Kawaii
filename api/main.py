@@ -16,6 +16,8 @@ from contextlib import asynccontextmanager
 from api.crud import init_db
 from api.logger_setup import setup_logging
 from api.v1.routes.routes import anime_route
+from api.error import register_handler
+from api.middleware import register_middleware
 
 version = "v1"
 
@@ -38,3 +40,5 @@ app = FastAPI(
     lifespan=life_span
 )
 app.include_router(anime_route, prefix=f"/api/{version}/anime", tags=["anime"])
+register_handler(app=app)
+register_middleware(app=app)
